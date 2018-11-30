@@ -3,7 +3,8 @@
   <h1>
      {{ title }}!
 </h1>  
-<form [formGroup]="myForm" (ngSubmit)='submit()'>
+<form [formGroup]="myForm" (ngSubmit)='submit()'> 
+  <!-- This is where the data is formed in webpage  -->
 
   <hr>
   <select class="dropDown" formControlName="menu">
@@ -11,15 +12,21 @@
     <option value="people">People</option>
     <option value="ships">Ships</option>
   </select>
+<!-- End dropdown menu -- refer to book api  -->
+
   <input matInput type="text" formControlName="getData" class="searchBar">
   <button>Get</button>
 </form>
+<!-- End the text request for data -->
+
 <div *ngIf='info'>
   <div *ngFor='let data of info.results'>
+    <!-- pointing to where to grab data -->
+    <!-- could of done this through components, I chose services instead since thats what we used for book api -->
 
     <div class="films">
       <div class="cardContainer1">
-        <h3>{{ data.title }}</h3>
+        <h3>{{ data.results }}</h3>   
         <p>{{ data.episode_id }}</p>
         <p>{{ data.opening_crawl }}</p>
         <p>{{ data.director }}</p>
@@ -59,3 +66,5 @@
   </div>
 </div>
 </div>
+
+<!-- classes are from bootstrap, however used formcontrol instead  -->
